@@ -68,7 +68,7 @@ const Hiretalkform = ({ bannerimage }: hirefrom) => {
                 src={
                   bannerimage
                     ? bannerimage
-                    : "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/3d-render-shopify-logo-extruded-transparent-green-resin-hovering-45-degree-angle-neon-gree_x102zo.webp"
+                    : "https://res.cloudinary.com/driveuyen/image/upload/v1753517295/base2brand_website/hire-shopify-developer-usa-dubia-australia/3d-render-shopify-logo-extruded-transparent-green-resin-hovering-45-degree-angle-neon-gree_x102zo.webp"
                 }
                 alt=""
                 width={1000}

@@ -1,13 +1,14 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import Head from "next/head";
 import Header from "../../../../component/header";
 import Footer from "../../../../component/footer";
 import BlogListing from "../blog-listing";
 import "../../blog/blog.css";
-import PageHead from "../../../../component/PageHead";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+// Reduced cache time for faster updates - can be invalidated on-demand via API
+export const revalidate = 60; // 1 minute instead of 1 hour
+
+const BASE_URL = "https://www.base2brand.com";
 
 interface Blog {
   pageTitle: string;
@@ -18,109 +19,130 @@ interface Blog {
   description: string;
 }
 
-function BlogDetail() {
-  const pathname = usePathname();
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
-  // console.log('blog;;;;',blog);
-
-  useEffect(() => {
-    // Extract slug from the URL 
-    // const { slug } = router.query // Make sure the slug corresponds to the dynamic part of your path ['/blog-detail/[slug]']
-    // console.log(slug,'slugslug')
-    
-    // if (!slug) return; // Ensure there's a slug to fetch data for
-    const parts = pathname.split('/');
-
-    // Get the last part of the array, which is the slug
-    const slug = parts.pop() || '';
-
-    const fetchBlog = async () => {
-      try {
-        const response = await fetch(`https://adminbackend.base2brand.com/api/B2Badmin/blogs/slug/${slug}`);
-        if (!response.ok) {
-          throw new Error(`Blog not found: ${response.statusText}`);
-        }
-        const data = await response.json();
-        // console.log("Fetched data:", data);
-        setBlog(data.blog);
-      } catch (err) {
-        // console.error("Fetching blog failed:", err.message);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+async function getBlogBySlug(slug: string) {
+  try {
+    const res = await fetch(
+      `https://adminbackend.base2brand.com/api/B2Badmin/blogs/slug/${slug}`,
+      { 
+        next: { 
+          revalidate, 
+          tags: [
+            `blog-page`,
+            `blog-page:${slug}`
+          ] 
+        } 
       }
-    };
- 
-
-    if (typeof slug === 'string') {
-      fetchBlog();
-    }
-  }, [pathname]);
-
-  //   if (loading) return <p>Loading...</p>;
-  //   if (error) return <p>Error: {error}</p>;
-  // if (typeof window !== "undefined") {
-  //     useEffect(() => {
-  //         let canonicalLink = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
-
-  //         if (!canonicalLink) {
-  //           // Create and append the canonical link if it doesn't exist
-  //           canonicalLink = document.createElement("link");
-  //           canonicalLink.rel = "canonical";
-  //           document.head.appendChild(canonicalLink);
-  //         }
-
-  //         // Safely set the canonical link's href
-  //         canonicalLink.href = window.location.href;
-  //       }, [ window.location.href]);
-  //     }
-
-  const baseURL = "https://base2brand.com/blog";
-  const wwwURL = "https://www.base2brand.com/blog";
-  let canonical = '';
-
-  if (typeof window !== "undefined" && blog?.slugUrl) {
-    const isUsingWWW = window.location.href.includes("www.");
-
-    // Replace spaces with hyphens and remove other special characters
-    const formattedTitle = blog.slugUrl.replace(/\s+/g, '-').replace(/[^\w\-]/g, '').toLowerCase();
-
-    canonical = isUsingWWW
-      ? `${wwwURL}/${formattedTitle}`
-      : `${baseURL}/${formattedTitle}`;
+    );
+    if (res.status === 404) return null;
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.blog as Blog | null;
+  } catch {
+    return null;
   }
-  // console.log('blog?.pageTitle', blog?.pageTitle)
-  const PageMeta = {
-    title: blog?.pageTitle || "Default Blog Title",  // Fallback title
-    description: blog?.pageDescription || "Default blog description.",  // Fallback description
-    canonical: canonical,
-    image: "/img/portfolio/b1.png",  // Image for sharing
-  };
+}
 
-  // console.log('PageMeta:', PageMeta);
+export async function generateStaticParams() {
+  try {
+    // Fetch all blogs with a high limit to get all static paths
+    const res = await fetch(
+      "https://adminbackend.base2brand.com/api/B2Badmin/blogs?page=1&limit=500",
+      { 
+        next: { revalidate },
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    if (!res.ok) return [];
+    const result = await res.json();
+    const blogs = result?.blogs || [];
+    
+    return blogs.map((blog: any) => ({
+      "blog-slug": blog.slugUrl || blog._id,
+    }));
+  } catch {
+    return [] as { [key: string]: string }[];
+  }
+}
+
+export async function generateMetadata(
+  { params }: { params: { "blog-slug": string } }
+): Promise<Metadata> {
+  const slug = params["blog-slug"];
+  const blog = await getBlogBySlug(slug);
+  
+  if (!blog) {
+    return { 
+      robots: { index: false, follow: true },
+      title: "Blog Not Found",
+    };
+  }
+
+  // Use the slug from params (which comes from URL) for canonical URL
+  // This ensures consistency with the actual URL structure
+  const canonical = `${BASE_URL}/blog/${slug}`;
+
+  const title = blog.pageTitle || blog.heading || "Base2Brand Blog";
+  const description = blog.pageDescription || blog.description?.replace(/<[^>]*>/g, '').substring(0, 160) || "";
+  const image = blog.imageUrl || `${BASE_URL}/img/portfolio/b1.png`;
+
+  return {
+    title,
+    description,
+    robots: { index: true, follow: true },
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: [
+        { 
+          url: image.startsWith('http') ? image : `${BASE_URL}${image}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image.startsWith('http') ? image : `${BASE_URL}${image}`],
+    },
+  };
+}
+
+export default async function BlogDetail(
+  { params }: { params: { "blog-slug": string } }
+) {
+  const slug = params["blog-slug"];
+  const blog = await getBlogBySlug(slug);
+
+  if (!blog) {
+    notFound();
+  }
 
   return (
     <>
       <Header />
-      <PageHead PageMeta={PageMeta} />
-      <head>
-        <meta property="og:title" content={PageMeta?.title} />
-        <meta property="og:description" content={PageMeta.description} />
-      </head>
-
-
       <div className="bgblack">
         <div className="container-fluid p-5 pb-5">
           <div className="row text-white mb-5 pb-5 justify-content-center g-0 g-lg-0 g-xl-5">
             <div className="col-md-9 mb-4">
               <div className="blog_section bg-dark">
-                <img className="blogs w-100" src={blog?.imageUrl} alt="Blog" />
+                <img 
+                  className="blogs w-100" 
+                  src={blog.imageUrl} 
+                  alt={blog.heading || "Blog"} 
+                />
                 <div className="p-4 pb-3 bgblack">
-                  <h1 className="blog_desc mb-2">{blog?.heading} </h1>
-                  <div className="title_description blog_detail_description" dangerouslySetInnerHTML={{ __html: blog?.description }}></div>
+                  <h1 className="blog_desc mb-2">{blog.heading}</h1>
+                  <div 
+                    className="title_description blog_detail_description" 
+                    dangerouslySetInnerHTML={{ __html: blog.description }}
+                  />
                 </div>
               </div>
             </div>
@@ -134,5 +156,3 @@ function BlogDetail() {
     </>
   );
 }
-
-export default BlogDetail;

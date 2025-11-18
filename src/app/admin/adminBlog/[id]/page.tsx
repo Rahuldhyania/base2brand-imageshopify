@@ -91,6 +91,18 @@ export default function EditBlogPage() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+      
+      // Revalidate cache immediately for updated blog (no secret needed for internal route)
+      try {
+        await axios.post("/api/revalidate-blog", {
+          slug: blogData.slugUrl,
+        }, {
+          withCredentials: true, // Send cookies for authentication
+        });
+      } catch (revalidateError) {
+        console.log("Revalidation failed (non-critical):", revalidateError);
+      }
+      
       alert("Blog updated successfully");
       router.push("/admin/adminBlog"); // Redirect back to the table page
     } catch (error) {

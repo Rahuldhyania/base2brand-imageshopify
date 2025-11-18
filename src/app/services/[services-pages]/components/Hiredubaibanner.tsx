@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Request from "../../request-form";
+import Request from "../../../request-form";
 import Image from "next/image";
 type dubaibanner = {
   pagetitle: string;
@@ -31,15 +31,18 @@ const Hiredubaibanner = ({
     <div className="bg_blue_right_none" style={{ background: "#111616" }}>
       <div className="max_w_1920 cus_container py-5">
         <div
-          className="hire_dubai_banner"
+          className="hire_dubai_banner position-relative"
           style={{
             backgroundImage: `url(${bannerimage})`
           }}
-        >
+        > 
+        <div className="position-absolute top-0">
+
+        </div>
           <div className="py-4 px-3 px-md-5 row">
-            <div className="col-12 col-lg-6" data-aos="zoom-in-up">
+            <div className="col-lg-10 text-center m-auto" data-aos="zoom-in-up">
               <h1
-                className="hire_dubai_banner_title w-lg-100 w-75"
+                className="hire_dubai_banner_title w-lg-100 w-75 m-auto"
                 dangerouslySetInnerHTML={{ __html: pagetitle }}
               />
               <p
@@ -55,8 +58,10 @@ const Hiredubaibanner = ({
                 </button>
               </div>
             </div>
-            <div className="col-12 col-lg-6 d-flex justify-content-center">
-              <Image
+            {/* <div className="col-12 col-lg-6 d-flex justify-content-center">
+              {
+                right_banner ?
+                <Image
                 src={right_banner}
                 alt="banner"
                 width={1000}
@@ -64,7 +69,11 @@ const Hiredubaibanner = ({
                 className="hire_dubai_right_banner sf"
                 data-aos="zoom-in-up"
               />
-            </div>
+              :
+              null
+              }
+              
+            </div> */}
           </div>
         </div>
       </div>

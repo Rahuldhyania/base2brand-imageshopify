@@ -151,7 +151,7 @@ export default function AdminBlog() {
       }
 
       // Create new blog
-      await axios.post(
+      const createResponse = await axios.post(
         "https://adminbackend.base2brand.com/api/B2Badmin/blogs",
         formData,
         {
@@ -160,6 +160,18 @@ export default function AdminBlog() {
           },
         }
       );
+      
+      // Revalidate cache immediately for new blog (no secret needed for internal route)
+      try {
+        await axios.post("/api/revalidate-blog", {
+          slug: selectedData.slugUrl,
+        }, {
+          withCredentials: true, // Send cookies for authentication
+        });
+      } catch (revalidateError) {
+        console.log("Revalidation failed (non-critical):", revalidateError);
+      }
+      
       alert("Blog created successfully");
 
       handleCloseModal();

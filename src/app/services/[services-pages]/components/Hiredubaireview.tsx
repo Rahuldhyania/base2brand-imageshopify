@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import React from "react";
 
 type review = {
@@ -28,11 +28,11 @@ const Hiredubaireview = ({ reviewdata }: review) => {
                   <p className="b2b-text m-0 text_hire_green fw-semibold">
                     {item.person_name ? item.person_name : item.name}
                   </p>
-                  <Image
+                  <CldImage
                     src={
                       item.reviewfrom
                         ? item.reviewfrom
-                        : "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/shopify-partner-white-MIN_g8gs5p.png"
+                        : "https://res.cloudinary.com/driveuyen/image/upload/v1753686497/base2brand_website/hire-shopify-developer-usa-dubia-australia/shopify-partner-white-MIN_g8gs5p.png"
                     }
                     alt=""
                     height={500}

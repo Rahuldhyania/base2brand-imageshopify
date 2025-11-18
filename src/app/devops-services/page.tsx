@@ -40,7 +40,7 @@ export default function page() {
         className="pt-5 pb-5 text-center text-sm-start"
       >
         <Consultation
-          banner="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/concept-save-energy.pnG"
+          banner="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/concept-save-energy.png"
           heading="DevOps has emerged as the foundation of modern software development"
           para="At Base2Brand, we offer comprehensive DevOps development services to help businesses streamline operations, improve system performance, and achieve faster time-to-market. As a leading DevOps service provider, we enable organizations to enhance agility, minimize downtime, and boost collaboration between development and operations teams."
           btnname="Consultation Now"

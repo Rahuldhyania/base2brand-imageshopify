@@ -12,7 +12,7 @@ export async function GET() {
       const result = await response.json();
 
       return result.data.map(
-        (item) => `${baseUrl}/service/${item.pageSlug}`
+        (item) => `${baseUrl}/services/${item.pageSlug}`
       ) || [];
     } catch (error) {
       console.error("Failed to fetch blogs:", error);

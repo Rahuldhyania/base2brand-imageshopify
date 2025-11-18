@@ -69,7 +69,7 @@ export default function FooterMap() {
                     <div className="row">
                         <div className="col-lg-6 col-md-12 text-center mb-5 mb-md-0">
                             <div className="mapWrapper mapWrapper-lg">
-                                <Image className="m-auto" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/map_nfrjer.webp" width="890" height="480" alt="Map" data-aos="zoom-in-up" data-aos-delay="300" />
+                                <Image className="m-auto" src="app/map_nfrjer.svg" width="890" height="480" alt="Map" data-aos="zoom-in-up" data-aos-delay="300" />
                                 <div className="address1" data-aos="zoom-in" data-aos-delay="600">
                                     <span data-tooltip-id="my-tooltip-1" className="addressDot"></span>
                                 </div>

@@ -1,4 +1,4 @@
-export const demodata = [
+export const demodata = [ 
   {
     status: 200,
     message: "Page retrieved successfully",
@@ -14,7 +14,7 @@ export const demodata = [
             solution_des:
               "As the best Shopify developers in Dubai, we optimize every inch of your store—compressing images, refining code, and implementing CDN and caching strategies. The result? A blazing-fast store that keeps visitors engaged and ready to buy.",
             tab_image:
-              "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/Group-1000004440_pyhfh0.webp"
+              "https://res.cloudinary.com/driveuyen/image/upload/v1753523329/base2brand_website/hire-shopify-developer-usa-dubia-australia/Group-1000004440_pyhfh0.webp"
           },
           {
             heading: "Slow-Loading Storefront2",
@@ -23,7 +23,7 @@ export const demodata = [
             solution_des:
               "As the best Shopify developers in Dubai, we optimize every inch of your store—compressing images, refining code, and implementing CDN and caching strategies. The result? A blazing-fast store that keeps visitors engaged and ready to buy.",
             tab_image:
-              "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/Group-1000004440_pyhfh0.webp"
+              "https://res.cloudinary.com/driveuyen/image/upload/v1753523329/base2brand_website/hire-shopify-developer-usa-dubia-australia/Group-1000004440_pyhfh0.webp"
           },
           {
             heading: "Slow-Loading Storefront3",
@@ -32,7 +32,7 @@ export const demodata = [
             solution_des:
               "As the best Shopify developers in Dubai, we optimize every inch of your store—compressing images, refining code, and implementing CDN and caching strategies. The result? A blazing-fast store that keeps visitors engaged and ready to buy.",
             tab_image:
-              "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/Group-1000004440_pyhfh0.webp"
+              "https://res.cloudinary.com/driveuyen/image/upload/v1753523329/base2brand_website/hire-shopify-developer-usa-dubia-australia/Group-1000004440_pyhfh0.webp"
           },
           {
             heading: "Slow-Loading Storefront4",
@@ -41,7 +41,7 @@ export const demodata = [
             solution_des:
               "As the best Shopify developers in Dubai, we optimize every inch of your store—compressing images, refining code, and implementing CDN and caching strategies. The result? A blazing-fast store that keeps visitors engaged and ready to buy.",
             tab_image:
-              "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/Group-1000004440_pyhfh0.webp"
+              "https://res.cloudinary.com/driveuyen/image/upload/v1753523329/base2brand_website/hire-shopify-developer-usa-dubia-australia/Group-1000004440_pyhfh0.webp"
           },
           {
             heading: "Slow-Loading Storefront5",
@@ -50,7 +50,7 @@ export const demodata = [
             solution_des:
               "As the best Shopify developers in Dubai, we optimize every inch of your store—compressing images, refining code, and implementing CDN and caching strategies. The result? A blazing-fast store that keeps visitors engaged and ready to buy.",
             tab_image:
-              "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/Group-1000004440_pyhfh0.webp"
+              "https://res.cloudinary.com/driveuyen/image/upload/v1753523329/base2brand_website/hire-shopify-developer-usa-dubia-australia/Group-1000004440_pyhfh0.webp"
           }
         ]
       },
@@ -92,9 +92,9 @@ export const demodata = [
         description:
           "Looking to scale your eCommerce business? Our Dubai-based Shopify developers craft high-performing, visually engaging, and conversion-optimized online stores tailored to your goals.",
         backgroundImage:
-          "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/monochrome-view-world-heritage-location-travel-destination_zoxmcg.webp",
+          "https://res.cloudinary.com/driveuyen/image/upload/v1753514908/base2brand_website/hire-shopify-developer-usa-dubia-australia/monochrome-view-world-heritage-location-travel-destination_zoxmcg.webp",
         topImage:
-          "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/3d-render-shopify-logo-extruded-transparent-green-resin-hovering-45-degree-angle-neon-gree_x102zo.webp"
+          "https://res.cloudinary.com/driveuyen/image/upload/v1753517295/base2brand_website/hire-shopify-developer-usa-dubia-australia/3d-render-shopify-logo-extruded-transparent-green-resin-hovering-45-degree-angle-neon-gree_x102zo.webp"
       },
       aboutSection: {
         title: ` <span  class="text_hire_green"> 100+ </span> Bespoke Shopify Stores Delivered with <span  class="text_hire_primary">  98%  </span>Client Satisfaction Across the <span  class="text_hire_green"> UAE </span>`,
@@ -103,7 +103,7 @@ export const demodata = [
         <br/>
         As trusted Shopify developers in Dubai, our team is skilled in delivering custom eCommerce solutions that are fast, secure, mobile-friendly, and SEO-ready. From store setup and theme customization to third-party integrations and performance tuning, we ensure every store we create reflects your brand identity and drives measurable results.`,
         image:
-          "https://cdn.shopify.com/s/files/1/0835/6334/8002/files/shopify-store-setup-with-multiple-payment-options-shipping-methods-tailored-customer-needs_xkg6t4.webp"
+          "https://res.cloudinary.com/driveuyen/image/upload/v1753527937/base2brand_website/hire-shopify-developer-usa-dubia-australia/shopify-store-setup-with-multiple-payment-options-shipping-methods-tailored-customer-needs_xkg6t4.webp"
       },
       testimonialsSection: [
         {
@@ -181,6 +181,7 @@ export const demodata = [
 // "use client";
 // import React, { useEffect, useRef, useState } from "react";
 // import SplitText from "../Splittext";
+// import { CldImage } from "next-cloudinary";
 // import Newbutton from "../Newbutton";
 
 // export default function Aboutus() {
@@ -281,8 +282,8 @@ export const demodata = [
 //           <div className="full-bleed">
 //             {/* wrapper we resize; image fills it */}
 //             <div ref={boxRef} className="about-banner-wrap">
-//               <Image
-//                 src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/3cb6e5be780693117fb29d801fb850dfbc2f9d9b_rhzksu.webp"
+//               <CldImage
+//                 src="https://res.cloudinary.com/driveuyen/image/upload/v1756809339/base2brand_website/new%20home%20page/3cb6e5be780693117fb29d801fb850dfbc2f9d9b_rhzksu.webp"
 //                 alt="about us banner"
 //                 width={1600}
 //                 height={900}

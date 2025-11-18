@@ -19,6 +19,7 @@ import Footer from "../../component/footer";
 import Footerbar from "./footerbar";
 import Callbackcus from "./customer-support/Callbackcus";
 import Ukwebsitemeta from "./Ukwebsitemeta";
+import Canonical from "./Canonical";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -162,27 +163,27 @@ const localBusinessSchema = {
   ]
 };
 
-const reviewRatingSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Base 2 Brand Infotech Pvt. Ltd",
-  url: "https://www.base2brand.com/",
-  review: {
-    "@type": "Review",
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: "5",
-      bestRating: "5",
-      worstRating: "1"
-    },
-    author: {
-      "@type": "Person",
-      name: "John"
-    },
-    datePublished: "2025-01-01",
-    description: "Base2Brand Infotech is a leading agency offering digital marketing, SEO, web development, and Shopify development services for businesses."
-  }
-};
+// const reviewRatingSchema = {
+//   "@context": "https://schema.org",
+//   "@type": "Service",
+//   name: "Base 2 Brand Infotech Pvt. Ltd",
+//   url: "https://www.base2brand.com/",
+//   review: {
+//     "@type": "Review",
+//     reviewRating: {
+//       "@type": "Rating",
+//       ratingValue: "5",
+//       bestRating: "5",
+//       worstRating: "1"
+//     },
+//     author: {
+//       "@type": "Person",
+//       name: "John"
+//     },
+//     datePublished: "2025-01-01",
+//     description: "Base2Brand Infotech is a leading agency offering digital marketing, SEO, web development, and Shopify development services for businesses."
+//   }
+// };
 const ratingSchema ={
   "@context": "https://schema.org",
   "@type": "Service",
@@ -222,6 +223,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Ukwebsitemeta/>
+        <Canonical/>
         {/* Google Fonts preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -269,7 +271,7 @@ export default function RootLayout({
         faqSchema,
         serviceSchema,
         localBusinessSchema,
-        reviewRatingSchema,
+        // reviewRatingSchema,
         ratingSchema
       ],
     }),
