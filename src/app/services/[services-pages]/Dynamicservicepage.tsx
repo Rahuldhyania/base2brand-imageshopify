@@ -13,26 +13,24 @@ import Hiretalkform from "./components/Hiretalkform";
 import Hirefaq from "./components/Hirefaq";
 
 function Dynamicservicepage({ serverData, slug }) {
-  const data = serverData; // Direct data from server
+  const data = serverData; 
 
   const baseURL = `https://base2brand.com/services/${slug}`;
   const wwwURL = `https://www.base2brand.com/services/${slug}`;
 
-  // Fixed canonical approach
   const getCanonicalUrl = () => {
     if (typeof window === "undefined") {
-      return baseURL; // SSR के लिए
+      return baseURL; 
     }
 
     const currentUrl = window.location.href;
-    // Remove query parameters और hash
     return currentUrl.split('?')[0].split('#')[0];
   };
 
   const PageMeta = {
     title: data?.data?.seoPageTitle,
     description: data?.data?.pageKeywords,
-    canonical: getCanonicalUrl(), // Fixed canonical
+    canonical: getCanonicalUrl(), 
     image: "/img/portfolio/b1.png",
   };
 
@@ -67,7 +65,6 @@ function Dynamicservicepage({ serverData, slug }) {
           <Hirefaq faqData={data.data.faqSection.faqs} />
         </div>
       ) : (
-        // Loading state अब server side handle होगा
         <div className="d-flex bg_blue_right justify-content-center align-items-center" style={{ height: "40vh" }}>
           <div className="spinner-border text-white" role="status" />
         </div>

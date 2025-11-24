@@ -66,11 +66,14 @@ a.nav-link {
 .tabs_link {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 33%;
     line-height: 3;
     cursor: pointer;
+    justify-content: center;
 }
-
+.tabs_link_warp {
+    row-gap: 20px;
+}
 img.icon_seo {
     width: 25px;
     height: 25px;
@@ -177,4 +180,10 @@ a.remove_under_line {
     .line_working_process {
         display: none;
     }
+    .tabs_link_warp {
+    row-gap: 10px;
+}
+.tabs_link {
+    justify-content: start;
+}
 }

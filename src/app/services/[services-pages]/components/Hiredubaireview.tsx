@@ -28,7 +28,7 @@ const Hiredubaireview = ({ reviewdata }: review) => {
                   <p className="b2b-text m-0 text_hire_green fw-semibold">
                     {item.person_name ? item.person_name : item.name}
                   </p>
-                  <CldImage
+                  {/* <CldImage
                     src={
                       item.reviewfrom
                         ? item.reviewfrom
@@ -38,7 +38,7 @@ const Hiredubaireview = ({ reviewdata }: review) => {
                     height={500}
                     width={1000}
                     className="hire_dubai_reviewfrom"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

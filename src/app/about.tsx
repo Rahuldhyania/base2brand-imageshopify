@@ -163,7 +163,7 @@ export default function Homeabout() {
                       <Image alt="" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/icon1_wa4fzh_1.svg"
                         width="37" height="50" /></div>
                     <div className='ms-2 w-100'>
-                      <h2 className='text-white text-start ps-2'><CountUp end={5} enableScrollSpy />
+                      <h2 className='text-white text-start ps-2'><CountUp end={6} enableScrollSpy />
                         +</h2>
                       <p className='text-white text-start  ps-2'>Years of IT Industury</p>
                     </div>
@@ -174,7 +174,7 @@ export default function Homeabout() {
                   <div className='d-flex h-100 align-items-center justify-content-between b2b-achievements-wrap'>
                     <div><Image alt="" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/icon2_xjnb1o.svg" width="50" height="50" /></div>
                     <div className='ms-2 w-100'>
-                      <h2 className='text-white text-start ps-2'><CountUp end={250} enableScrollSpy />+</h2>
+                      <h2 className='text-white text-start ps-2'><CountUp end={423} enableScrollSpy />+</h2>
                       <p className='text-white text-start ps-2'>Successfull Project</p>
                     </div>
                   </div>
@@ -182,10 +182,15 @@ export default function Homeabout() {
 
                 <div className="count-col">
                   <div className='d-flex h-100 align-items-center justify-content-between b2b-achievements-wrap'>
-                    <div><Image alt="" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/icon3_hsypru.svg" width="40" height="50" /></div>
+                    <div className="our_team_svg">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 20 20">
+                        <rect width="20" height="20" fill="none" />
+                        <path fill="#B6CCFF" d="M8.5 4.5a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0M10 2a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5m4.5 3a1 1 0 1 1 2 0a1 1 0 0 1-2 0m1-2a2 2 0 1 0 0 4a2 2 0 0 0 0-4m-11 1a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0a2 2 0 0 1-4 0M5 15l.1-.002q.103.509.304.975A3 3 0 0 1 2 13V9.25C2 8.56 2.56 8 3.25 8h2.129a2.24 2.24 0 0 0-.365 1H3.25a.25.25 0 0 0-.25.25V13a2 2 0 0 0 2 2m8.975-6c-.116-.57-.62-1-1.225-1h-5.5C6.56 8 6 8.56 6 9.25V14a4 4 0 0 0 4.25 3.992a5.5 5.5 0 0 1-.665-1.02A3 3 0 0 1 7 14V9.25A.25.25 0 0 1 7.25 9zm1.011 0h1.764a.25.25 0 0 1 .25.25v.35q.538.276 1 .657V9.25C18 8.56 17.44 8 16.75 8h-2.129c.196.292.325.633.365 1m-.486 1a4.5 4.5 0 1 0 0 9a4.5 4.5 0 0 0 0-9m0 2a.5.5 0 0 1 .5.5V14h1.5a.5.5 0 0 1 0 1H15v1.5a.5.5 0 0 1-1 0V15h-1.5a.5.5 0 0 1 0-1H14v-1.5a.5.5 0 0 1 .5-.5" />
+                      </svg>
+                    </div>
                     <div className='ms-2 w-100'>
-                      <h2 className='text-white text-start ps-2'><CountUp end={4.9} enableScrollSpy decimals={1} decimal="." />+</h2>
-                      <p className='text-white text-start ps-2'>Ratings on Clutch</p>
+                      <h2 className='text-white text-start ps-2'><CountUp end={45} enableScrollSpy  />+</h2>
+                      <p className='text-white text-start ps-2'>Our Team</p>
                     </div>
                   </div>
                 </div>
@@ -194,7 +199,7 @@ export default function Homeabout() {
                   <div className='d-flex h-100 align-items-center justify-content-between b2b-achievements-wrap'>
                     <div><Image alt="" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/icon4_ckyn0a.svg" width="43" height="50" /></div>
                     <div className='ms-2 w-100'>
-                      <h2 className='text-white text-start ps-2'><CountUp end={100} enableScrollSpy />+</h2>
+                      <h2 className='text-white text-start ps-2'><CountUp end={363} enableScrollSpy />+</h2>
                       <p className='text-white text-start  ps-2'>Happy Client</p>
                     </div>
                   </div>
@@ -204,7 +209,7 @@ export default function Homeabout() {
                   <div className='d-flex h-100 align-items-center justify-content-between b2b-achievements-wrap'>
                     <div><Image alt="" src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/icon5_ucbth3.svg" width="50" height="50" /></div>
                     <div className='ms-2 w-100'>
-                      <h2 className='text-white text-start ps-2'><CountUp end={100} enableScrollSpy />+</h2>
+                      <h2 className='text-white text-start ps-2'><CountUp end={350} enableScrollSpy />+</h2>
                       <p className='text-white text-start  ps-2'>Website Designed</p>
                     </div>
                   </div>

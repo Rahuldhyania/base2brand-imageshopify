@@ -15,7 +15,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import LoaderComponent from "../Loading/LoaderComponent";
-
+import Request from "../request-form";
 
 interface BlogItem {
   _id: string;
@@ -122,7 +122,17 @@ function Home() {
     canonical: canonical, // Replace with your page's canonical URL
     image: "/img/portfolio/b1.png", // Replace with your image URL for sharing
   };
+  const [showModal, setShowModal] = useState(false);
 
+  const toggleModal = () => {
+    setShowModal(!showModal);
+    setTimeout(function () {
+      const ModalBody = document.querySelector(".request-form");
+      if (ModalBody) {
+        ModalBody.classList.add("transformAnim");
+      }
+    }, 200);
+  };
 
   const renderBlogs = () => {
     if (data.length === 0) {
@@ -178,7 +188,9 @@ function Home() {
               <h1 className="mb-md-3 mb-2 b2b-sub-heading-bold text-uppercase">Our Recent Blogs </h1>
               <p className="text-white col-12 col-sm-12 col-md-10">The latest in IT Trends, Strategies and Tips.</p>
               <div className="service-btn d-flex flex-wrap mt-3 w-100">
-                <button className="b2b-btn b2b-btn-lg m-0">Request a Quote</button>
+
+                <button className="b2b-btn b2b-btn-lg m-0"  onClick={toggleModal}>Request a Quote</button>
+
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-5 d-flex flex-wrap align-items-center justify-content-center" data-aos="fade-up">
@@ -209,6 +221,7 @@ function Home() {
           </div>
           <Footer />
         </div>
+         {showModal && <Request onCloseModal={toggleModal} />}
       </div>
     </>
   );

@@ -26,7 +26,7 @@ export default function home() {
         </div>
 
         <div className="row d-flex flex-wrap ">
-          <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 shopify_bar_cusmargin">
+          {/* <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 shopify_bar_cusmargin">
             <div className="tab-content" id="pills-tabContent">
               <a
                 href="https://www.shopify.com/partners/directory/partner/base2brand4"
@@ -38,7 +38,6 @@ export default function home() {
                   role="tabpanel"
                   aria-labelledby="pills-digital-tab"
                 >
-                  {/* <img className="w-70 active_img m-auto" src={shopifyDev.src} alt="Search Engine Optimization" /> */}
 
                   <Image
                     src="https://cdn.shopify.com/s/files/1/0835/6334/8002/files/shopifycertified.png"
@@ -49,8 +48,8 @@ export default function home() {
                 </div>
               </a>
             </div>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 shopify_bar_cusmargin" id="WEB">
+          </div> */}
+          <div className="col-sm-12 shopify_bar_cusmargin" id="WEB">
             <div
               className="nav flex-column nav-pills me-3"
               id="v-pills-tab"
@@ -58,7 +57,7 @@ export default function home() {
               aria-orientation="vertical"
               aria-hidden="true"
             >
-              <div className="d-flex justify-content-between flex-wrap">
+              <div className="d-flex justify-content-between flex-wrap tabs_link_warp">
                 <div
                   className="tabs_link b2b-text"
                   role="tab"
@@ -194,8 +193,8 @@ export default function home() {
               </div>
             </div>
             <div>
-              <div className="shopify_cus_heading">
-                <h2 className="b2b-sub-heading">
+              <div className="shopify_cus_heading pt-5">
+                <h2 className="b2b-sub-heading text-center">
                   Our ERP Integration Services
                 </h2>
               </div>
@@ -266,9 +265,9 @@ export default function home() {
                   </Link>
                 </div>
               </div>
-              <div className="home_shpoify_bar_btn">
+              <div className="home_shpoify_bar_btn pt-5">
                 {/* <Link href='/shopify' className='remove_under_line' data-aos="fade-up-left" data-aos-delay="900"> */}
-                <a href="/hire-shopify-developers">
+                <a href="/hire-shopify-developers" className="m-auto">
                   <button className="b2b-btn b2b-btn-sm mt-4 m-0">
                     {" "}Read More{" "}
                   </button>
